@@ -1,95 +1,128 @@
-import React , {useState} from 'react';
-import {useHistory} from 'react-router-dom';
-// import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 import "./Login.css";
 
-
 const Login = () => {
-
     let history = useHistory();
-    
-    //Hooks
-    const [credentials, setCredentials] = useState({email:'',password:''});
-    const [msgError, setMensajeError] = useState('');
+    // Hooks
+    const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [msgError, setMensajeError] = useState("");
 
+    const [errorLogin, setErrorLogin] = useState({
+        eEmail:"",
+        ePassword:""
+    });
+  
     //Handlers
     const updateCredentials = (e) => {
-        setCredentials({...credentials, [e.target.name]: e.target.value})
-    }
+      setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    };
 
+    const checkLogin = (arg)=>{
+        switch (arg) {
+            case "email":
+                if(!/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/.test(credentials.email)){
+                    setErrorLogin({
+                        ...errorLogin,eEmail:"El email introducido no es valido ejemplo@ejemplo.com",
+                    });
+                } else {
+                    setErrorLogin({...errorLogin, eEmail:""})
+                };
+                break;
+                case "password":
+                    if (
+                      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/.test(
+                        credentials.password
+                      )
+                    ) {
+                      setErrorLogin({
+                        ...errorLogin,
+                        ePassword:
+                          "La contraseña debe contener como mínimo 8 caracteres, mayúsculas, minúsculas, un número",
+                      });
+                    } else {
+                      setErrorLogin({ ...errorLogin, ePassword: "" });
+                    }
+                    break;
+            default:
+                break;
+        }
+    }
+  
+    useEffect(() => {
+      
+  
+    }, []);
+  
     const logeame = async () => {
+      //Primero, testeamos los datos
+  
+      if (
+        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(credentials.email)) {
+        setMensajeError("Introduce un correo Valido");
+        return;
+      }
+  
+      //A continuación, generamos el body de datos
+      let body = {
+        email: credentials.email,
+        password: credentials.password,
+      };
+  
+      //Axios..envio
+      try {
+        let res = await axios.post("http://localhost:3005/user/login", body);
+  
+        setCredentials(res.data.results);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+  
+        setTimeout(() => {
+          history.push("/profile");
+        }, 750);
+  
+  
+      } catch (err) {
+        setMensajeError(err);
+      }
+  
+      //res viene de vuelta con el token y los datos
+    };
 
+  return (
+      <div>
+    <div className="vistaLogin">
+        {/* <pre>{JSON.stringify(credentials, null, 2)}</pre> */}
+        <div className="loginCard">
+          <input
+            className="inputLogin"
+            name="email"
+            title="email"
+            placeholder="Email...fakefork@fork.com"
+            onChange={updateCredentials}
+            onBlur={() => checkLogin("email")}
+            lenght="30"
+          /><div>{errorLogin.eEmail}</div>
+        <input
+            className="inputLogin"
+            name="password"
+            title="password"
+            placeholder="Password"
+            onChange={updateCredentials}
+            onBlur={() => checkLogin("password")}
+            lenght="30"
+          /><div>{errorLogin.ePassword}</div>
 
-        //Primero, testeamos los datos
-
-        // if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(credentials.email) ) {
-            
-        //     setMensajeError('Introduce un e-mail válido');
-        //     return;
-        // };
-
-        // if(credentials.password.length < 4){
-        //     setMensajeError('Introduce un password de por lo menos 4 caracteres');
-        //     return;
-        // }
-
-        // //A continuación, generamos el body de datos
-        // let body = {
-        //     email : credentials.email,
-        //     password : credentials.password
-        // }
-        //Axios..envio
-
-        // let res = await axios.post('endpointDelBackend', body);
-
-        //res viene de vuelta con el token y los datos..por lo tanto los tendremos
-        //disponibles en res.data
-
-        
-        // let token = "";
-        let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGJkZGYyYmQzNjAzMjQ4ZmMyZTJmNTUiLCJjcmVhdGVBdCI6IjIwMjEtMDYtMDlUMTE6Mjg6MDEuNDEyWiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyMzIzODA4MX0.Fs73g3IGJ5BCqkOnPKHDM5LRQL1-DB4eMt7bviMSHkk"
-        let user = {
-            nombre : "Jose Luis",
-            email : "joseluis@test.com",
-            password : "12345678ASDFGH",
-            id : "60bddf9e03b4160428e52d8e"
-        }
-
-        if(token !== ""){
-            //A falta de RDX ..buenas son tortas
-
-            localStorage.setItem("token", token);
-            localStorage.setItem("user", JSON.stringify(user));
-        
-
-            //Redireccion
-
-            setTimeout(()=> {
-            
-                history.push("/profile");
-
-            }, 750);
-        }else {
-            setMensajeError("Las credenciales no eran correctas");
-        }
-
-        
-    }
-
-    return (
-        
-        <div className="vistaLogin">
-            {/* <pre>{JSON.stringify(credentials, null,2)}</pre> */}
-            <div className="loginCard">
-                <input  className="inputLogin" type='email' name='email' title='email' placeholder="email" onChange={updateCredentials} lenght='30'/>
-                <input  className="inputLogin" type='password'  name='password' title='password' placeholder="password" onChange={updateCredentials} lenght='30'/>
-                <div className="sendButton" type="submit" onClick={()=>logeame()}>Login</div>
-                <div>{msgError}</div>
-            </div>
-            
+        <div className="sendButton" type="submit" onClick={() => logeame()}>
+          Login
         </div>
-    )
-}
+        <div>{msgError}</div>
+      </div>
+    </div>
+    </div>
+  );
+};
 
 export default Login;

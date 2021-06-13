@@ -4,8 +4,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './containers/Home/Home';
 import Register from './containers/Register/Register';
 import Header from './components/Header/Header';
-import Login from './containers/Login/Login';
 import Profile from './containers/Profile/Profile';
+import Login from './containers/Login/Login';
 
 function App() {
   return (
