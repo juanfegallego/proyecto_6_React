@@ -1,0 +1,28 @@
+
+.header {
+    height: 6em;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.logo{
+    height: 3em;
+    width: 9em;
+    display: flex;
+    position: relative;
+    left: 1em;
+    cursor: pointer;
+
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
