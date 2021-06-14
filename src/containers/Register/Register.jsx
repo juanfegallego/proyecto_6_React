@@ -214,7 +214,7 @@ const Register = () => {
       ></input>
             <div>{errors.eBirthday}</div>
         <button
-          className="boton"
+          className="botonRegister"
           type="submit"
           onClick={() => ejecutaRegistro()}
         >

@@ -11,6 +11,7 @@
 }
 
 .boton:hover{
-    background-color: red;
+    background-color:#8fbdc244;
+
     transition: 0.2s;
 }
