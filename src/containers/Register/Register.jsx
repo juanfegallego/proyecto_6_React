@@ -47,7 +47,7 @@ const Register = () => {
 
       case "surname":
           if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.surname)) {setErrors(
-              {...errors,eSurname:"El nombre introducido no es valido",});
+              {...errors,eSurname:"El apellido introducido no es valido",});
         } else {
           setErrors({ ...errors, eSurname: "" });
         }

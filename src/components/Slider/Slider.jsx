@@ -17,10 +17,10 @@ class CarouselSlider extends React.Component {
                  <Card className="card-wrap" style={{backgroundColor: "#ededf4"}} >
                     <Carousel autoplay effect="fade">
                         <div>
-                            <img className= "PhotoSlider" style={{width: "100vw", height: "80vh", backgroundColor: "#ededf4"}} src={cena} alt =""/>
+                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={cena} alt =""/>
                         </div>
                         <div>
-                            <img className= "PhotoSlider" style={{width: "100vw", height: "80vh", backgroundColor: "#ededf4"}} src={home} alt=""/>
+                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={home} alt=""/>
                         </div>
                         
                     </Carousel>
