@@ -37,9 +37,9 @@ const Register = () => {
 
   const checkError = (arg) => {
     switch (arg) {
-      case "name":
+      case "name" :
             if (!/^(?=.{3,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+[-!$%^&*()_+|~=`{}";'<>?,.]+)*$/.test(datosUser.name)) {setErrors(
-                {...errors,eName: "El nombre introducido no es valido",});
+                {...errors,eName : "El nombre introducido no es valido",});
             } else {
                  setErrors({ ...errors, eName: "" });
                  }
@@ -142,7 +142,7 @@ const Register = () => {
             placeholder="Name"
             onBlur={() => checkError("name")}
         ></input>
-            <div>{errors.eName}</div>
+            <div className="error">{errors.eName}</div>
 
         <input
             className="inputBase"
@@ -152,7 +152,7 @@ const Register = () => {
             placeholder="Surname"
             onBlur={() => checkError("surname")}
        ></input>
-              <div>{errors.eSurname}</div>
+              <div className="error" >{errors.eSurname}</div>
       <input
             className="inputBase"
             type="email"
@@ -161,7 +161,7 @@ const Register = () => {
             placeholder="Email"
             onBlur={() => checkError("email")}
       ></input>
-              <div>{errors.eEmail}</div>
+              <div className="error">{errors.eEmail}</div>
       <input
             className="inputBase"
             type="string"
@@ -170,7 +170,7 @@ const Register = () => {
             placeholder="Password"
             onBlur={() => checkError("password")}
       ></input>
-             <div>{errors.ePassword}</div>
+             <div className="error">{errors.ePassword}</div>
         <input
             className="inputBase"
             type="tel"
@@ -179,7 +179,7 @@ const Register = () => {
             placeholder="Phone +34 000 000 000"
             onBlur={() => checkError("phoneNumber")}
       ></input>
-             <div>{errors.ephoneNumber}</div>
+             <div className="error">{errors.ephoneNumber}</div>
              <input
         className="inputBase"
         type="select"
@@ -212,7 +212,7 @@ const Register = () => {
             placeholder="DD/MM/YYYY"
             onBlur={() => checkError("birthday")}
       ></input>
-            <div>{errors.eBirthday}</div>
+            <div className="error">{errors.eBirthday}</div>
         <button
           className="botonRegister"
           type="submit"
