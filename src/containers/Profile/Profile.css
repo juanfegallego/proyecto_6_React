@@ -1,15 +1,62 @@
-.botonLogOut {
-    width: 5em;
-    height: 2.5em;
+.bodyProfile {
     display: flex;
+    flex-direction : column;
     align-items: center;
     justify-content: center;
-    color: white;
-    background-color: darkred;
-    transition: 0.2s;
-    border-radius: 5em;
-    cursor: pointer;
-    box-shadow: 0.1em 0.1em 0.2em 0.1em grey;
+    padding-top: 8em;
+    margin: 2em;
+}
+.profile{
+    display: flex;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    background-color: white;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 5em;
+}
+
+.textProfile{
+    
+}
+.imgProfile{
+    width: 2em;
+    height: 2em;
+}
+.cardProfile{
+    display: flex;
+    height: 20em;
+    width: 36em;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 2em;
+    font-size: large;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+.botonLogOut {
+    display: flex;
+    width: 25em;
+    border: 0;
+    position: relative;
+    background-color: #101115;
+    border-radius: 5px;
+    height: 3em;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-size: 1em;
+    margin-top: 2em;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .botonLogOut:hover{
