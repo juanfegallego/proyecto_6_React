@@ -1,4 +1,4 @@
-
+import './Global.css'
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './containers/Home/Home';
