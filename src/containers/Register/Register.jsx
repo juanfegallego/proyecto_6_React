@@ -4,6 +4,8 @@ import axios from "axios";
 // import { Select , Form  } from "antd";
 import "./Register.css";
 import cena from "../../components/img/cena.jpg";
+
+
 const Register = () => {
   let history = useHistory();
 
@@ -122,6 +124,8 @@ const Register = () => {
         break;
 
       case "birthday":
+
+
         if (
           !/^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/.test(
             datosUser.birthday
