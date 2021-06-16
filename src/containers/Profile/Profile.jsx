@@ -39,7 +39,7 @@ const Profile = (props) => {
                     <div>{props.credentials.user.phoneNumber}</div>
                     <div>{props.credentials.user.country}</div>
                     <div>{props.credentials.user.city}</div>
-                    <div>{props.credentials.user.birthday}</div>
+                    <div>{moment(props.credentials.user.birthday).format('LL')}</div>
                     </div>
                     
                 </div>
