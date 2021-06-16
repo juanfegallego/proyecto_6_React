@@ -4,6 +4,9 @@ import user from "../../components/img/user.png"
 import {connect} from 'react-redux';
 import moment from 'moment';
 import "./Profile.css";
+import { ADD_CHARACTERS } from '../../redux/type';
+import axios from 'axios';
+import Reservas from '../../components/Reservas/reservas'
 
 
 const Profile = (props) => {
@@ -25,6 +28,14 @@ const Profile = (props) => {
     //     setUserData("");
 
     // }
+    const getFromApi = async () => {
+
+        let res = await axios.get("https://rickandmortyapi.com/api/character");
+        
+        //Guardaremos en RDX
+        props.dispatch({type:ADD_CHARACTERS,payload:res.data.results});
+
+    }
 
     if (props.credentials?.user.token !== '') {
         console.log(props.credentials);
@@ -40,10 +51,19 @@ const Profile = (props) => {
                     <div>{props.credentials.user.country}</div>
                     <div>{props.credentials.user.city}</div>
                     <div>{moment(props.credentials.user.birthday).format('LL')}</div>
+
+                    
+                     <div className="botonPersonajes" onClick={()=>getFromApi()}>BRING!</div>
                     </div>
                     
                 </div>
+                
+                <div className="reservas">
+                    <Reservas/>
+                </div>
             </div>
+              
+        
 
 
         )

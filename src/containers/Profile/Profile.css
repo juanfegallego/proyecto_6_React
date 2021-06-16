@@ -1,8 +1,8 @@
 .bodyProfile {
     display: flex;
-    flex-direction : column;
+    flex-direction : row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     padding-top: 8em;
     margin: 2em;
 }
@@ -39,6 +39,13 @@
     flex-direction: column;
 }
 
+.reservas{
+    display: flex;
+    height: 20em;
+    width: 22em;
+    padding: 2em;
+    background-color: lightslategray;
+}
 
 
 
@@ -63,3 +70,4 @@
     background-color: red;
     transition: 0.2s;
 }
+
