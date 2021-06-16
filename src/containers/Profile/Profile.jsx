@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import user from "../../components/img/user.png"
+import moment from 'moment';
 
 import "./Profile.css";
 
@@ -35,7 +36,7 @@ const Profile = () => {
                     <div>{userData.user.phoneNumber}</div>
                     <div>{userData.user.country}</div>
                     <div>{userData.user.city}</div>
-                    <div>{userData.user.birthday}</div>
+                    <div>{moment(userData.user.birthday).format('LL')}</div>
                     </div>
                     
                 </div>
