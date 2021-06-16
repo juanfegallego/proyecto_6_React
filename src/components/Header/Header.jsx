@@ -1,24 +1,65 @@
-
-import React from 'react';
+import React from "react";
 import "./Header.css";
 
-import Boton from '../../components/Boton/Boton';
+import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { LOGOUT } from "../../redux/type";
+import Boton from "../../components/Boton/Boton";
 import logo from "../img/logo.png";
 
-const Header = () => {
-    return (
-        <div className="header">
-            <div >
-                <img className="logo" src={logo} />
-            </div>
-            <div className="text" >
-                <Boton lugar="/" destino="Home" />
-                <Boton lugar="/register" destino="Registro" />
-                <Boton lugar="/login" destino="Login" />
-                <Boton lugar="/profile" destino="Profile" />
-            </div>
-        </div>
-    )
-}
+const Header = (props) => {
+  let history = useHistory();
+  const takeMe = (were) => {
+    history.push(were);
+  };
+  const logOut = () => {
+    props.dispatch({ type: LOGOUT });
+  };
 
-export default Header;
+  if (props.credentials?.token !== "") {
+    console.log(props.credentials.user.name);
+    return (
+      <div className="header">
+        <div>
+          <img className="logo" src={logo} />
+        </div>
+        <div className="text">
+          <Boton lugar="/" destino="Home" onClick={() => takeMe("/")} />
+
+          <div onClick={() => takeMe("/profile")}>
+            {props.credentials.user.name}
+          </div>
+
+          <div onClick={() => logOut("/")}>
+            <Boton lugar="/" destino="LogOut"></Boton>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="header">
+        <div>
+          <img className="logo" src={logo} />
+        </div>
+        <div className="text">
+          <Boton lugar="/" destino="Home" onClick={() => takeMe("/")}></Boton>
+
+          <Boton
+            lugar="/register"
+            destino="Registro"
+            onClick={() => takeMe("/")}
+          ></Boton>
+
+          <Boton
+            lugar="/login"
+            destino="Login"
+            onClick={() => takeMe("/login")}
+          />
+        </div>
+      </div>
+    );
+  }
+};
+
+export default connect((state) => ({ credentials: state.credentials }))(Header);
