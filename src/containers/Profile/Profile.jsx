@@ -1,45 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import user from "../../components/img/user.png"
-
+import {connect} from 'react-redux';
 import "./Profile.css";
 
-const Profile = () => {
+
+const Profile = (props) => {
 
     let history = useHistory();
+    
 
-    const [userData, setUserData] = useState({
-        token: localStorage.getItem("token"),
-        user: JSON.parse(localStorage.getItem("user"))
-    });
+    // const [userData, setUserData] = useState({
+    //     token: localStorage.getItem("token"),
+    //     user: JSON.parse(localStorage.getItem("user"))
+    // });
 
-    useEffect(() => {
-        console.log(userData.token);
-    }, []);
+    // useEffect(() => {
+    //     console.log(userData.token);
+    // }, []);
 
-    const deslogea = () => {
-        localStorage.clear();
-        setUserData("");
+    // const deslogea = () => {
+    //     localStorage.clear();
+    //     setUserData("");
 
-    }
+    // }
 
-    if (userData.token) {
+    if (props.credentials?.user.token !== '') {
+        console.log(props.credentials);
         return (
             <div className="bodyProfile">
                 <div className="cardProfile">
                     <div className="profile"><img className="imgProfile" src={user} alt="" /></div>
                     <div className="textProfile">
-                    <div>{userData.user.name} </div>
-                    <div>{userData.user.surname}</div>
-                    <div>{userData.user.email}</div>
-                    <div>{userData.user.phoneNumber}</div>
-                    <div>{userData.user.country}</div>
-                    <div>{userData.user.city}</div>
-                    <div>{userData.user.birthday}</div>
+                    <div>{props.credentials.user.name}</div>
+                    <div>{props.credentials.user.surname}</div>
+                    <div>{props.credentials.user.email}</div>
+                    <div>{props.credentials.user.phoneNumber}</div>
+                    <div>{props.credentials.user.country}</div>
+                    <div>{props.credentials.user.city}</div>
+                    <div>{props.credentials.user.birthday}</div>
                     </div>
                     
                 </div>
-                <div className="botonLogOut" onClick={() => deslogea()}>LOG OUT</div>
             </div>
 
 
@@ -60,4 +62,4 @@ const Profile = () => {
 
 
 
-export default Profile;
+export default connect((state)=>({credentials:state.credentials}))(Profile);
