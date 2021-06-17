@@ -17,11 +17,11 @@ const Header = (props) => {
   };
 
   if (props.credentials?.token !== "") {
-    console.log(props.credentials.user.name);
+
     return (
       <div className="header">
         <div>
-          <img className="logo" src={logo} />
+          <img className="logo" alt="logo" src={logo} />
         </div>
         <div className="text">
           <Boton lugar="/" destino="Home" onClick={() => takeMe("/")} />
@@ -40,7 +40,7 @@ const Header = (props) => {
     return (
       <div className="header">
         <div>
-          <img className="logo" src={logo} />
+          <img className="logo" alt="logo" src={logo} />
         </div>
         <div className="text">
           <Boton lugar="/" destino="Home" onClick={() => takeMe("/")}></Boton>

@@ -4,7 +4,7 @@ import user from "../../components/img/user.png"
 import {connect} from 'react-redux';
 import moment from 'moment';
 import "./Profile.css";
-import { ADD_CHARACTERS } from '../../redux/type';
+import { ADD_BOOKINGS } from '../../redux/type';
 import axios from 'axios';
 import Reservas from '../../components/Reservas/reservas'
 
@@ -13,36 +13,32 @@ const Profile = (props) => {
 
     let history = useHistory();
     
+    // const searchBookings = async () => {
 
-    // const [userData, setUserData] = useState({
-    //     token: localStorage.getItem("token"),
-    //     user: JSON.parse(localStorage.getItem("user"))
-    // });
 
-    // useEffect(() => {
-    //     console.log(userData.token);
-    // }, []);
+    
 
-    // const deslogea = () => {
-    //     localStorage.clear();
-    //     setUserData("");
+    const getUserBokings = async () => {
+        try {
+             let res = await axios.get(`http://localhost:3005/booking/userbooking/${props.credentials.idUser}`)
+               //GUARDANDO EL REDUX
+               props.dispatch({type:ADD_BOOKINGS,payload: res.data});
 
-    // }
-    const getFromApi = async () => {
 
-        let res = await axios.get("https://rickandmortyapi.com/api/character");
-        
-        //Guardaremos en RDX
-        props.dispatch({type:ADD_CHARACTERS,payload:res.data.results});
+            } catch (error) {
+                console.log(error)
+
+            } 
+
 
     }
 
     if (props.credentials?.user.token !== '') {
-        console.log(props.credentials);
+
         return (
             <div className="bodyProfile">
                 <div className="cardProfile">
-                    <div className="profile"><img className="imgProfile" src={user} alt="" /></div>
+                    <div className="profile"><img className="imgProfile" src={user} alt="profile" /></div>
                     <div className="textProfile">
                     <div>{props.credentials.user.name}</div>
                     <div>{props.credentials.user.surname}</div>
@@ -53,7 +49,7 @@ const Profile = (props) => {
                     <div>{moment(props.credentials.user.birthday).format('LL')}</div>
 
                     
-                     <div className="botonPersonajes" onClick={()=>getFromApi()}>BRING!</div>
+                     <div className="botonPersonajes" onClick={()=>getUserBokings()}>Reservas</div>
                     </div>
                     
                 </div>

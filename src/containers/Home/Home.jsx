@@ -13,7 +13,7 @@ const Home = () => {
         <div>
             <div >
                 
-                <img className="imageHome" src={imageHome} />
+                <img className="imageHome" alt="Home" src={imageHome} />
                 <CarouselSlider/>
             </div>
 

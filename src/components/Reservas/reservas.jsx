@@ -1,27 +1,43 @@
 
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
+import './Reservas.css'
+import {useHistory} from 'react-router-dom';
+import moment from 'moment';
 
 const Reservas = (props) => {
 
-    // const [characters, setCharacters] = useState(props?.characters);
+ console.log(props.userBooking)
 
+            if(!props.userBooking[0]?.idUser === ""){
 
-    if(!props.characters[0]?.id){
-        return (
-            <div className="vistaDisplay">
-                NO HAY NADA AUN
-            </div>
-        )
-    }else{
+                return(
+                 <div>
+                  ESTOY CARGANDO
+                </div>
+                );
+            }else {
+                return(
+                    <div className="allBookings">
+                        <h1>MY BOOKINGS</h1>
+                        <div className="bookingsContainer">
+                            
+                                <div className="bookingCard">
+                                     {/* <p> RESTAURANTE : {props.userBooking[0]?.usuario} </p> */}
+                                    <p> USUARIO: {props.userBooking[0]?.usuario} </p>
+                                    <p> COMENSALES : {props.userBooking[0]?.partySize} </p>
+                                    <p> FECHA :{moment(props.userBooking[0]?.fecha).format('LLL')}</p>
+                                    <p> ALERGIAS : {props.userBooking[0]?.alergias} </p>
+                                    <p> COMENTARIOS : {props.userBooking[0]?.comentarios} </p> 
+                                     
+                                </div>
+                        </div>
+                    </div>
+                )
+                }
+            }
         
-        return (
-            <div className="vistaDisplay">
-                {props.characters[0].name}
-            </div>
-        )
-    }
-    
-}
-
-export default  connect((state)=>({characters:state.characters}))(Reservas);
+    export default connect((state) => ({
+        userBooking: state.userBooking,
+        credentials:state.credentials
+        }))(Reservas);

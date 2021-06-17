@@ -19,16 +19,14 @@
     bottom: 1em;
 }
 
-.textProfile{
-    
-}
+
 .imgProfile{
     width: 2em;
     height: 2em;
 }
 .cardProfile{
     display: flex;
-    height: 20em;
+    height: 22em;
     width: 22em;
     border-radius: 5px;
     background-color: #f0f0f0;
@@ -41,7 +39,7 @@
 
 .reservas{
     display: flex;
-    height: 20em;
+    height: 25em;
     width: 22em;
     padding: 2em;
     background-color: lightslategray;

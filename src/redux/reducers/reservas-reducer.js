@@ -1,12 +1,12 @@
-import {ADD_CHARACTERS} from '../type';
+import {ADD_BOOKINGS} from '../type';
 
 const initialState = {
-    characters: []
+    userBooking: []
 };
 
-const charactersReducer = (state = initialState, action) => {
+const userBookingReducer = (state = initialState, action) => {
     switch(action.type){
-        case ADD_CHARACTERS :
+        case ADD_BOOKINGS :
             return action.payload;
         
         
@@ -15,4 +15,4 @@ const charactersReducer = (state = initialState, action) => {
     }
 }
 
-export default charactersReducer;
+export default userBookingReducer;

@@ -4,7 +4,8 @@ import home from '../img/home.jpg'
 
 
 import 'antd/dist/antd.css'
-import {Card,Row,Col,Carousel} from 'antd';
+import {Card,Carousel} from 'antd';
+// row and col
 
 class CarouselSlider extends React.Component {
     constructor(props) {
@@ -17,10 +18,10 @@ class CarouselSlider extends React.Component {
                  <Card className="card-wrap" style={{backgroundColor: "#ededf4"}} >
                     <Carousel autoplay effect="fade">
                         <div>
-                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={cena} alt =""/>
+                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={cena} alt ="photoSlider"/>
                         </div>
                         <div>
-                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={home} alt=""/>
+                            <img className= "PhotoSlider" style={{width: "100vw", height: "100vh", backgroundColor: "#ededf4"}} src={home} alt="PhotoSlider"/>
                         </div>
                         
                     </Carousel>

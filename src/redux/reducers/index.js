@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import credentials from './credential-reducer';
-import characters from './reservas-reducer'
+import userBooking from './reservas-reducer'
 
 const rootReducer = combineReducers({
     credentials,
-    characters
+    userBooking
 });
 
 export default rootReducer;
