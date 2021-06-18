@@ -32,7 +32,8 @@ const Reservas = (props) => {
               return (
                 <div key={reserva._id}>
                   <div className="bookingCard">
-                    <p> Usuario: {reserva.usuario} </p>
+                    <p> Restaurante: {reserva.restaurant.name} </p>
+                    <p> Usuario: {reserva.idUser.name} </p>
                     <p> Comensales : {reserva?.partySize} </p>
                     <p> Fecha :{moment(reserva.fecha).format("LL")}</p>
                     <p> Hora : {reserva.hora}PM</p>
