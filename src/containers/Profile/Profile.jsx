@@ -18,7 +18,7 @@ const Profile = (props) => {
     }, [])
     const getUserBokings = async () => {
         try {
-            let res = await axios.get(`http://localhost:3005/booking/userbooking/${props.credentials.idUser}`);
+            let res = await axios.get(`http://localhost:3005/booking/userbooking/${props.credentials.idUser}`,{headers:{'authorization':'Bearer ' + props.credentials.token}});
             //GUARDANDO EL REDUX
             props.dispatch({ type: ADD_BOOKINGS, payload: res.data });
         } catch (error) {
