@@ -7,13 +7,14 @@ import "./Profile.css";
 import { ADD_BOOKINGS } from '../../redux/type';
 import axios from 'axios';
 import Reservas from '../../components/Reservas/reservas'
+
 const Profile = (props) => {
     let history = useHistory();
     // const searchBookings = async () => {
     useEffect(() => {
         setTimeout(() => {
             getUserBokings()
-        }, 5000);
+        }, 1000);
     }, [])
     const getUserBokings = async () => {
         try {
@@ -42,6 +43,7 @@ const Profile = (props) => {
                 </div>
                 <div className="reservas">
                     <Reservas />
+                    
                 </div>
             </div>
         )

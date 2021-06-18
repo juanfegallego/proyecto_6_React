@@ -4,6 +4,7 @@ import "./Header.css";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { LOGOUT } from "../../redux/type";
+import {CLEAR_BOOKINGS} from "../../redux/type"
 import Boton from "../../components/Boton/Boton";
 import logo from "../img/logo.png";
 
@@ -13,7 +14,8 @@ const Header = (props) => {
     history.push(were);
   };
   const logOut = () => {
-    props.dispatch({ type: LOGOUT });
+    props.dispatch({ type: LOGOUT })
+    props.dispatch({type :CLEAR_BOOKINGS})
   };
 
   if (props.credentials?.token !== "") {

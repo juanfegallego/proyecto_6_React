@@ -4,18 +4,20 @@ import { connect } from 'react-redux';
 import './Reservas.css'
 import {useHistory} from 'react-router-dom';
 import moment from 'moment';
+import Spinner from '../Spinner/Spinner';
 
 const Reservas = (props) => {
 
  console.log(props.userBooking)
 
-            if(!props.userBooking[0]?.idUser === ""){
+            if(!props.userBooking[0]?.idUser){
 
                 return(
-                 <div>
-                  ESTOY CARGANDO
+                 <div >
+                     <Spinner />
                 </div>
                 );
+                
             }else {
                 return(
                     <div className="allBookings">
