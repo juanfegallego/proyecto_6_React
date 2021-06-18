@@ -8,7 +8,13 @@ import Spinner from "../Spinner/Spinner";
 const Reservas = (props) => {
   console.log(props.userBooking);
 
-  if (!props.userBooking[0]?.idUser) {
+  if (props?.userBooking === "vacio") {
+    return (
+      <div>
+        <p>No tienes ninguna reserva</p>
+      </div>
+    );
+  } else if (!props.userBooking[0]?.idUser) {
     return (
       <div>
         <Spinner />
@@ -22,6 +28,7 @@ const Reservas = (props) => {
           <div className="bookingsContainer">
             {props?.userBooking.map((reserva) => {
               console.log(reserva._id);
+              console.log(reserva);
               return (
                 <div key={reserva._id}>
                   <div className="bookingCard">
@@ -46,3 +53,7 @@ export default connect((state) => ({
   userBooking: state.userBooking,
   credentials: state.credentials,
 }))(Reservas);
+
+// <div>
+// <Spinner />
+// </div>
