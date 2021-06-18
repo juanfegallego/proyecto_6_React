@@ -1,9 +1,15 @@
-.bookingCard{
+.bookingsContainer{
     display: flex;
-
-    align-items: center;
-    justify-content: space-around;
-
-    border:0.2em solid transparent;
-    background-color: rgb(179, 179, 179);
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.bookingCard{
+    border: 0.2em solid white;
+    background-color: #f0f0f0;
+    flex-direction: row;
+    padding: 1em;
+}
+.parrafos{
+    display:flex;
+    flex-direction: column;
 }

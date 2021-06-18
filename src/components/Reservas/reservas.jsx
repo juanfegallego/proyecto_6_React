@@ -32,6 +32,7 @@ const Reservas = (props) => {
               return (
                 <div key={reserva._id}>
                   <div className="bookingCard">
+                  <p> IMG: {reserva.restaurant.imgRest} </p>
                     <p> Restaurante: {reserva.restaurant.name} </p>
                     <p> Usuario: {reserva.idUser.name} </p>
                     <p> Comensales : {reserva?.partySize} </p>
