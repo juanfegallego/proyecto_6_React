@@ -1,82 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import user from "../../components/img/user.png"
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import "./Profile.css";
 import { ADD_BOOKINGS } from '../../redux/type';
 import axios from 'axios';
 import Reservas from '../../components/Reservas/reservas'
-
-
 const Profile = (props) => {
-
     let history = useHistory();
-    
     // const searchBookings = async () => {
-
-
-    
-
+    useEffect(() => {
+        setTimeout(() => {
+            getUserBokings()
+        }, 5000);
+    }, [])
     const getUserBokings = async () => {
         try {
-             let res = await axios.get(`http://localhost:3005/booking/userbooking/${props.credentials.idUser}`)
-               //GUARDANDO EL REDUX
-               props.dispatch({type:ADD_BOOKINGS,payload: res.data});
-
-
-            } catch (error) {
-                console.log(error)
-
-            } 
-
-
+            let res = await axios.get(`http://localhost:3005/booking/userbooking/${props.credentials.idUser}`);
+            //GUARDANDO EL REDUX
+            props.dispatch({ type: ADD_BOOKINGS, payload: res.data });
+        } catch (error) {
+            console.log(error)
+        }
     }
-
     if (props.credentials?.user.token !== '') {
-
         return (
             <div className="bodyProfile">
                 <div className="cardProfile">
                     <div className="profile"><img className="imgProfile" src={user} alt="profile" /></div>
                     <div className="textProfile">
-                    <div>{props.credentials.user.name}</div>
-                    <div>{props.credentials.user.surname}</div>
-                    <div>{props.credentials.user.email}</div>
-                    <div>{props.credentials.user.phoneNumber}</div>
-                    <div>{props.credentials.user.country}</div>
-                    <div>{props.credentials.user.city}</div>
-                    <div>{moment(props.credentials.user.birthday).format('LL')}</div>
-
-                    
-                     <div className="botonPersonajes" onClick={()=>getUserBokings()}>Reservas</div>
+                        <div>{props.credentials.user.name}</div>
+                        <div>{props.credentials.user.surname}</div>
+                        <div>{props.credentials.user.email}</div>
+                        <div>{props.credentials.user.phoneNumber}</div>
+                        <div>{props.credentials.user.country}</div>
+                        <div>{props.credentials.user.city}</div>
+                        <div>{moment(props.credentials.user.birthday).format('LL')}</div>
+                        <div className="botonPersonajes" onClick={() => getUserBokings()}>Reservas</div>
                     </div>
-                    
                 </div>
-                
                 <div className="reservas">
-                    <Reservas/>
+                    <Reservas />
                 </div>
             </div>
-              
-        
-
-
         )
     } else {
-
         setTimeout(() => {
             history.push("/login");
         }, 3000)
-
         return (
             <div>NO ESTAS LOGEADO, NO PUEDES ENTRAR AQUI</div>
         )
     }
 }
-
-
-
-
-
-export default connect((state)=>({credentials:state.credentials}))(Profile);
+export default connect((state) => ({ credentials: state.credentials }))(Profile);
