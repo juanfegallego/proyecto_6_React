@@ -97,7 +97,7 @@ const Login = (props) => {
       props.dispatch({ type: LOGIN, payload: data });
 
       setTimeout(() => {
-        history.push("/profile");
+        history.push("/");
       }, 100);
     } catch (err) {
       setMensajeError(err);

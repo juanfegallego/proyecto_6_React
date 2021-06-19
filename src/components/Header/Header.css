@@ -9,7 +9,15 @@
     position: sticky;
     top: 0;
 }
-
+.imgUser{
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.imgUser:hover{
+    transform: scale(1.2);
+}
 .logo{
     height: 3em;
     width: 9em;

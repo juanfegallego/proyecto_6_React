@@ -6,8 +6,6 @@ import moment from "moment";
 import Spinner from "../Spinner/Spinner";
 
 const Reservas = (props) => {
-  console.log(props.userBooking);
-
   if (props?.userBooking === "vacio") {
     return (
       <div>
@@ -27,14 +25,10 @@ const Reservas = (props) => {
         <div className="allBookings">
           <div className="bookingsContainer">
             {props?.userBooking.map((reserva) => {
-              console.log(reserva._id);
-              console.log(reserva);
-              console.log(reserva.restaurant.imgRest)
               return (
                 <div key={reserva._id}>
                   <div className="bookingCard">
                     <img id="imgRest" src={reserva.restaurant.imgRest} alt="imgRest"/>
-                   
                   {/* <img> IMG: {reserva.restaurant.imgRest} </img> */}
                     <p> Restaurante: {reserva.restaurant.name} </p>
                     <p> Usuario: {reserva.idUser.name} </p>
