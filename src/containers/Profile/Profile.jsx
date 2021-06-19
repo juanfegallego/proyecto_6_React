@@ -29,8 +29,9 @@ const Profile = (props) => {
         return (
             <div className="bodyProfile">
                 <div className="cardProfile">
-                    <div className="profile"><img className="imgProfile" src={user} alt="profile" /></div>
+                    <div className="profile"> <img className="imgProfile" src={props.credentials.user.imgUser} alt="profile" /></div>
                     <div className="textProfile">
+                        {console.log(props.credentials.user)}
                         <div>{props.credentials.user.name}</div>
                         <div>{props.credentials.user.surname}</div>
                         <div>{props.credentials.user.email}</div>
@@ -38,7 +39,6 @@ const Profile = (props) => {
                         <div>{props.credentials.user.country}</div>
                         <div>{props.credentials.user.city}</div>
                         <div>{moment(props.credentials.user.birthday).format('LL')}</div>
-                        <div className="botonPersonajes" onClick={() => getUserBokings()}>Reservas</div>
                     </div>
                 </div>
                 <div className="reservas">
