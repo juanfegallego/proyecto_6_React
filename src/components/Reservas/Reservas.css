@@ -13,3 +13,8 @@
     display:flex;
     flex-direction: column;
 }
+
+#imgRest{
+    height: 7em;
+    width: 7em;
+}

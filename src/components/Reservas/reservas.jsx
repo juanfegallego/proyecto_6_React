@@ -29,10 +29,13 @@ const Reservas = (props) => {
             {props?.userBooking.map((reserva) => {
               console.log(reserva._id);
               console.log(reserva);
+              console.log(reserva.restaurant.imgRest)
               return (
                 <div key={reserva._id}>
                   <div className="bookingCard">
-                  <p> IMG: {reserva.restaurant.imgRest} </p>
+                    <img id="imgRest" src={reserva.restaurant.imgRest} alt="imgRest"/>
+                   
+                  {/* <img> IMG: {reserva.restaurant.imgRest} </img> */}
                     <p> Restaurante: {reserva.restaurant.name} </p>
                     <p> Usuario: {reserva.idUser.name} </p>
                     <p> Comensales : {reserva?.partySize} </p>
