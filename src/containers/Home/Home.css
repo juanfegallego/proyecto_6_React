@@ -1,6 +1,22 @@
-
+.bodyHome{
+    display: flex;
+}
 .imageHome{
     height: 100vh;
     width: 100vw;
+}
+
+.containerRest{
+    display: flex;
+}
+
+.textRestaurantes{
+    background-color: #8FBDC2;
+    margin: 0px;
+    font-size: xx-large;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
