@@ -1,0 +1,29 @@
+
+.bodyRest{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cardRest{
+    display: flex;
+    width: 49em;
+    border: 0.2em solid white;
+    background-color: #f0f0f0;
+    flex-direction: row;
+    padding: 1em;
+}
+
+.textRest{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+}
+
+.imgRest{
+    height: 15em;
+    width: 20em;
+    border-radius: 0.5em;
+    margin: 1em;
+}
