@@ -31,7 +31,6 @@ const Profile = (props) => {
                 <div className="cardProfile">
                     <div className="profile"> <img className="imgProfile" src={props.credentials.user.imgUser} alt="profile" /></div>
                     <div className="textProfile">
-                        {console.log(props.credentials.user)}
                         <div>{props.credentials.user.name}</div>
                         <div>{props.credentials.user.surname}</div>
                         <div>{props.credentials.user.email}</div>
