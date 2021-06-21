@@ -1,94 +1,77 @@
-
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { REST } from "../../redux/type";
 import "./Restaurants.css";
+import axios from "axios";
+import { connect } from "react-redux";
+import Boton from "../Boton/Boton"
+
 
 const Restaurants = (props) => {
-    return (
-        <div className="bodyRest">
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/llebeig.jpg" alt="Llebeig" />
-                <div className="textRest">
-                    <h1><b>Llebeig</b></h1>
-                <p>Mediterráneo</p>
-                <p>Passeig de l'Albereda, 48, 46023 Valencia, Valencia</p>
-                </div>
-                
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/lia.jpeg" alt="Lia" />
-                <div className="textRest">
-                <h1><b>LIA</b></h1>
-                <p>Mediterráneo</p>
-                <p>Carrer de la Boatella, 5, 46001 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/lienzo.jpg" alt="Lienzo" />
-                <div className="textRest">
-                <h1><b>Lienzo</b></h1>
-                <p>Gastronomico</p>
-                <p>Plaça de Tetuán, 18, 46003 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest"src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/partiggiano.png" alt="partiggiano" />
-                <div className="textRest">
-                <h1><b>Partiggiano</b></h1>
-                <p>Italiano</p>
-                <p>Passeig de l'Albereda, 10, 46010 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/saona.jpg" alt="saona" />
-                <div className="textRest">
-                <h1><b>Saona</b></h1>
-                <p>Mediterráneo</p>
-                <p>Carrer de Martínez Cubells, 7, 46002 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/circo.jpg" alt="circo" />
-                <div className="textRest">
-                <h1><b>Circo</b></h1>
-                <p>Americano</p>
-                <p>Gran Via del Marqués del Túria, 25, 46005 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/laMordidita.jpg" alt="LaMordidita" />
-                <div className="textRest">
-                <h1><b>La Mordidita</b></h1>
-                <p>Mexicano</p>
-                <p>Calle del Mar, 18, 46003 Valencia, Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/voltereta.jpg" alt="Voltereta" />
-                <div className="textRest">
-                <h1><b>voltereta | manhattan</b></h1>
-                <p>Gastronomico</p>
-                <p>Carrer d'Isabel la Catòlica, 11, 46004 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/vaqueta.jpg" alt="vaqueta" />
-                <div className="textRest">
-                <h1><b>Vaqueta</b></h1>
-                <p>Mediterráneo</p>
-                <p>Carrer de Sant Ferran, 22, 46001 Valencia, Valencia</p>
-                </div>
-            </div>
-            <div className="cardRest">
-                <img className="imgRest" src="https://raw.githubusercontent.com/juanfegallego/proyecto_5_mongoose-GitFlow/develop/img/laSastreria.png" alt="LaSastreria" />
-                <div className="textRest">
-                <h1><b>La Sastreria</b></h1>
-                <p>Mediterráneo</p>
-                <p>Carrer de Josep Benlliure, 42, 46011 Valencia, Valencia</p>
-                </div>
-            </div>
+
+  const [restaurants, setRestaurants] = useState([]);
+  
+   useEffect(() => {
+
+      getRest()
+   
+   },[] )
+
+  const getRest = async () => {
+    try {
+      let res = await axios.get(`http://localhost:3005/rest`);
+      //GUARDANDO EN REDUX
+      // props.dispatch({ type: REST, payload: res.data });
+      setRestaurants(res.data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+ 
+    if (restaurants === undefined) {
+      return(
+        <div>
+          cargando
         </div>
-    )
+      )
+    }else{
+      return(
+        <div>
+                         {restaurants?.map((rest)=>{
+                         
+                     return(
+                       <div key={rest._id}>
+                         <div className="cardRest">
+                         <img className="imgRest" src={rest.imgRest} alt="imgrest"/>
+                         <div className="textRest">
+                           <h1>{rest.name}</h1>
+                           <p> Ciudad: {rest.city}</p>
+                           <p> Comida: {rest.typeFood}</p>
+                           <p> Direccion: {rest.addres}</p>
+                           <p>Telefono: {rest.telephone}</p>
+
+                           <div className="reserva"> Reserva</div>
+                         </div>
+                         </div>
+                         
+       
+                       </div>
+                     )
+       
+                      })}
+      
+        </div>
+   
+      )
+     
+    }
+   
+  
 }
 
-export default Restaurants;
+export default connect((state) => ({ 
+    restaurants:state.restaurants,
+    
+}))(Restaurants);
 

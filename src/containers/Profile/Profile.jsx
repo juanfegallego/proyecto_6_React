@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import user from "../../components/img/user.png"
+
 import { connect } from 'react-redux';
 import moment from 'moment';
 import "./Profile.css";
@@ -10,7 +10,7 @@ import Reservas from '../../components/Reservas/reservas'
 
 const Profile = (props) => {
     let history = useHistory();
-    // const searchBookings = async () => {
+
     useEffect(() => {
         setTimeout(() => {
             getUserBokings()

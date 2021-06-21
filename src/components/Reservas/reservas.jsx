@@ -53,6 +53,3 @@ export default connect((state) => ({
   credentials: state.credentials,
 }))(Reservas);
 
-// <div>
-// <Spinner />
-// </div>
