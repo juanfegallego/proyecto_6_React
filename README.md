@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+<a name="top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1>App Bookings Restaurants - Frontend</h1>
 
-## Available Scripts
 
-In the project directory, you can run:
+<b>The Fakefork</b>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="./src/components/img/logo.png" alt="trello" width="50%"></details>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🧐 [About](#id1)   
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+💻 [Technologys](#id2)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+:clipboard: [Instructions](#id3)
 
-### `npm run eject`
+⚙️ [Phase I backend development](#id4)
+⚙️ [Phase II Frontend development](#id5)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+<a name="id1"></a>
+## **About**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This is the frontend for a restaurant reservation application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is part of the Full Stack Developer Bootcamp taught by [GeeksHubs Academy](https://bootcamp.geekshubsacademy.com/).
 
-### Code Splitting
+---
+**Phase II**
+**Start Date:** 07/ jun /2021
+**Deadline:** 21 / jun / 2021
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Collaborators:**
+* [Carlos Quintero Moreno](https://github.com/CarlosRQuinteroM)
+* [Juan Felipe Porras Gallego](https://github.com/juanfegallego)
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<a name="id2"></a>
 
-### Making a Progressive Web App
+## **Technologies**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+These are the technologies with which we have worked in this project:
+<img src="./src/components/img/logovisual.png" alt="Visual" width="30"/> <img src="./src/components/img/javascript2.png" alt="JavaScript" width="30"/><img src="./src/components/img/nodejs.png" alt="HTML5" width="30"/>  <img src="./src/components/img/git.png" alt="Git" width="30"/> <img src="./src/components/img/github2.png" alt="GitHub" width="30"/><img src="./src/components/img/postman.png" alt="GitHub" width="30"/>   <img src="./src/components/img/trelloLogo.png" alt="trello" width="30"/>  <details><summary>Click to expand trello picture</summary><img src="./src/components/img/trello.png" alt="trello" width="1000"></details>
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+<a name="id3"></a>
+***
+## **Instructions**
+<details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+<summary>Click to expand</summary>
 
-### `npm run build` fails to minify
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- <b>To install all dependencies</b>
+```
+    $ npm i
+```
+
+
+</details>
+
+<a name="id4"></a>
+## [Phase I Backend development](https://github.com/CarlosRQuinteroM/proyecto_5_mongoose-GitFlow)
+<a name="id5"></a>
+## Phase II Frontedckend development
+<!-- <details> -->
+
+
+The project consists of the development of a reservation management system from the backend to the frontend.
+
+We work with an internal database that is hosted in <b>MongoDB Atlas</b> and with its own API.
+
+The frontend has these sections:
+
+<b>Home</b>
+<details>
+<summary>Click to expand</summary>
+
+<img src="./src/components/img/home2.png" alt="trello" width="100%"></details>
+
+</details>
+
+<b>Register</b>
+<details>
+<summary>Click to expand</summary>
+
+<img src="./src/components/img/register.png" alt="trello" width="100%">
+
+all boxes have error control applied
+
+<img src="./src/components/img/errores.png" alt="trello" width="100%">
+
+</details>
+
+<b>Login</b>
+<details>
+<summary>Click to expand</summary>
+
+<img src="./src/components/img/login.png" alt="trello" width="100%"></details>
+
+<b>Profile + Bookings</b>
+<details>
+<summary>Click to expand</summary>
+
+<img src="./src/components/img/profile.png" alt="trello" width="100%"></details>
+
+</details>
+
+
+
+
+<a name="id5"></a>
+
+<a name="id6"></a>
+
+
+***
+[:top:](#top)
