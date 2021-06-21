@@ -3,10 +3,12 @@ import { REST } from "../../redux/type";
 import "./Restaurants.css";
 import axios from "axios";
 import { connect } from "react-redux";
-import Boton from "../Boton/Boton"
+import reservas from "../Reservas/reservas";
+import { useHistory } from "react-router";
 
 
 const Restaurants = (props) => {
+  let history = useHistory();
 
   const [restaurants, setRestaurants] = useState([]);
   
@@ -15,6 +17,19 @@ const Restaurants = (props) => {
       getRest()
    
    },[] )
+
+    const reservas = ()=>{
+
+       props.dispatch({ type: REST, payload: restaurants });
+
+       setTimeout(() => {
+         history.push('/bookings')
+         
+       }, 500);
+    }
+
+
+
 
   const getRest = async () => {
     try {
@@ -39,7 +54,6 @@ const Restaurants = (props) => {
       return(
         <div>
                          {restaurants?.map((rest)=>{
-                         
                      return(
                        <div key={rest._id}>
                          <div className="cardRest">
@@ -50,8 +64,7 @@ const Restaurants = (props) => {
                            <p> Comida: {rest.typeFood}</p>
                            <p> Direccion: {rest.addres}</p>
                            <p>Telefono: {rest.telephone}</p>
-
-                           <div className="reserva"> Reserva</div>
+                           <div className="reserva"  onClick={()=> reservas()}> Reserva</div>
                          </div>
                          </div>
                          

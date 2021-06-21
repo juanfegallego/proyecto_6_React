@@ -6,6 +6,7 @@ import Register from './containers/Register/Register';
 import Header from './components/Header/Header';
 import Profile from './containers/Profile/Profile';
 import Login from './containers/Login/Login';
+import Bookings from './containers/Bookings/Bookings';
 
 function App() {
   return (
@@ -13,7 +14,6 @@ function App() {
 
       <BrowserRouter>
 
-        {/* La cabecera fija iría aqui importada */}
 
         <Header/>
 
@@ -23,6 +23,7 @@ function App() {
           <Route path="/register" exact component={Register}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/profile" exact component={Profile}/>
+          <Route path="/bookings" exact component={Bookings}/>
 
         </Switch>
       
